@@ -24,7 +24,7 @@ class UserController extends BaseController{
 		if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password')))){
 
        
-        	return Redirect::to('naruto')
+        	return Redirect::to('home')
             ->with('success', 'Congrats, welcome to the site!');
 		}
     }
@@ -38,7 +38,7 @@ class UserController extends BaseController{
 
 	public function MakeSignin(){
 		if (Auth::check()){
-			return Redirect::to('naruto')
+			return Redirect::to('home')
 			->with('success', 'You are already logged in');
 		}
 		return View::make('manga/signin');	
@@ -54,14 +54,14 @@ class UserController extends BaseController{
 			// attempt to do the login
 	  if (Auth::attempt(($userdata), true)) {
 
-    	return Redirect::to('naruto');
+    	return Redirect::to('home');
 	  }
 	  else{
 		  return Redirect::to('signin')
 		  ->with('error', 'Invalid Username or Password');
 	}
 	
-	return Redirect::to('naruto')
+	return Redirect::to('home')
             ->with('success', 'Your insertion was completed successfully!');
 	
 		
@@ -69,7 +69,7 @@ class UserController extends BaseController{
 	
 	public function LogOut(){
 		Auth::logout();
-		return Redirect::to('naruto')
+		return Redirect::to('home')
 		->with('success', 'You have been logged out');
 	}
 }

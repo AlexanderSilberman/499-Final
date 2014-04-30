@@ -39,7 +39,7 @@ tr:hover{background-color:#3399FF}
 	
 
 	<div id="leftContent" style="width:700px">
-    <h2 style="padding-left: 20px;margin-left: 5px;"> <?php echo $chapters->title;?> Manga 
+    <h2 style="padding-left: 20px;margin-left: 5px;"> <?php echo $chapters->title;?> Manga <?php if(Auth::check()){ echo '<a href="mymanga">MY MANGA </a>'; } ?>
     @if (Auth::check())
         {{ Form::open(array('url' => $title)) }}
         <input type="hidden" name="user_id" value={{{ Auth::user()->id }}} />
@@ -53,7 +53,10 @@ tr:hover{background-color:#3399FF}
     	{{ Form::close() }} 
     @else
     	{{Form::open(array('url' => 'login'))}}
-        {{Form::submit('Log In!')}}
+        {{Form::submit('Make an account!')}}
+       {{Form::close()}}
+       {{Form::open(array('url' => 'signin'))}}
+        {{Form::submit('Sign In!')}}
        {{Form::close()}}
     @endif
     </h2>

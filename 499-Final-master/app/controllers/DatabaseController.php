@@ -30,7 +30,7 @@ class DatabaseController extends BaseController{
 		  $manga->save();	
 	  }
 	  
-	  return View::make('naruto');
+	  return View::make('manga/home');
 	}
 	
 	public function MakeHome(){
@@ -40,7 +40,7 @@ class DatabaseController extends BaseController{
 	  ->take(50)
 	  ->get();
 	  
-	  return View::make('manga/Home', ['newmangas' => $newmangas, 'search'=>$mangasearch]);
+	  return View::make('manga/home', ['newmangas' => $newmangas, 'search'=>$mangasearch]);
 	}
 	public function mymanga(){
 		if (Auth::check())
